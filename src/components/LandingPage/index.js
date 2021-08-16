@@ -1,8 +1,14 @@
 import React from 'react';
-import Header from './header';
+import { View } from 'react-native';
+
+import Header from './Header';
+import TestOptions from './TestOptions';
 
 export default function LandingPage() {
   return (
-    <Header />
+    <View>
+      <Header />
+      <TestOptions />
+    </View>
   );
 }

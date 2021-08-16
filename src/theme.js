@@ -5,17 +5,15 @@ const theme = {
     textPrimary: '#ffffff',
     textSecondary: '#3e9ffe',
     primary: '#353a65',
-    secondary: '#3e9dfc',
+    secondary: '#0369CE',
     correct: '#27ae60',
     wrong: '#ff004e',
     grey: '#a8a9b2',
-    white: '#fff',
-    red: '#d73a4a'
   },
   fontSizes: {
-    body: 14,
-    subheading: 18,
-    heading: 22
+    body: 18,
+    subheading: 21,
+    heading: 24
   },
   fonts: {
     main: Platform.select({
