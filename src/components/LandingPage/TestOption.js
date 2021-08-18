@@ -63,7 +63,7 @@ export default function TestOption({ text }) {
 
   return (
     <View>
-      <Pressable onPress={() => navigation.navigate('TestQuestions')} style={styles.container}>
+      <Pressable onPress={() => navigation.navigate('TestQuestions', { name: text })} style={styles.container}>
         <Text style={styles.text}>{text}</Text>
         <View style={styles.button}>
           <View style={styles.TriangleShapeView}></View>

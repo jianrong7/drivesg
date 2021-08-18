@@ -1,8 +1,8 @@
 "# drivesg" 
 ### To Do
-- Change status bar to fit background color
 - Add splash landing page
-- Make fixed header for "DriveSG"
-- When holding onto button, add animation highlight
-- Add back button for questions page
-- Extract all question data into JSON
+- When holding onto button, add ripple effect (checkout react gesture handler)
+- Edit weirder questions in firebase
+- Make buttons work
+- Make Progress Bar work
+- Adding images
