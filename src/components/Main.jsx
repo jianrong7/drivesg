@@ -29,8 +29,9 @@ export default function Main() {
           />
           <Stack.Screen 
           name="TestQuestions"
-          component={TestQuestions} 
-          options={{ headerBackTitleVisible: false }}
+          component={TestQuestions}
+          options={({ route }) => ({ title: route.params.name })}
+          // options={{ headerBackTitleVisible: false }}
           />
         </Stack.Navigator>
       </NavigationContainer>
