@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { useHistory } from 'react-router-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 import theme from '../../theme';
 
@@ -9,10 +10,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: theme.colors.secondary,
-    padding: 20,
+    padding: 15,
     borderRadius: 15,
     marginBottom: 15,
-    marginTop: 15,
     justifyContent: 'space-between',
     elevation: 10
   },
@@ -59,14 +59,11 @@ const styles = StyleSheet.create({
 });
 
 export default function TestOption({ text }) {
-  const history = useHistory();
-  const handlePress = () => {
-    console.log("hello")
-    history.push(`/test`);
-  }
+  const navigation = useNavigation();
+
   return (
     <View>
-      <Pressable onPress={handlePress} style={styles.container}>
+      <Pressable onPress={() => navigation.navigate('TestQuestions')} style={styles.container}>
         <Text style={styles.text}>{text}</Text>
         <View style={styles.button}>
           <View style={styles.TriangleShapeView}></View>

@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
 export default function TestOptions() {
   return (
-    <View style={{ marginTop: 15 }}>
+    <View>
         <TestOption text={'Basic Theory Test'} />
         <TestOption text={'Final Theory Test'} />
     </View>
