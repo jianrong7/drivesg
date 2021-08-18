@@ -1,8 +1,6 @@
 import React from 'react';
-import Constants from 'expo-constants';
-import { StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Route, Switch, Redirect } from 'react-router-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import btt1 from '../assets/output.json';
 import theme from '../theme';
@@ -10,27 +8,32 @@ import theme from '../theme';
 import LandingPage from './LandingPage';
 import TestQuestions from './TestQuestions';
 
+const Stack = createNativeStackNavigator();
+
 export default function Main() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Switch>
-        <Route path="/" exact>
-          <LandingPage />
-        </Route>
-        <Route path="/test">
-          <TestQuestions />
-        </Route>
-        <Redirect to="/" />
-      </Switch>
-    </SafeAreaView>
+      <NavigationContainer>
+        <Stack.Navigator 
+        initialRouteName="LandingPage"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: theme.colors.primary
+          },
+          headerTintColor: theme.colors.textPrimary
+        }}
+        >
+          <Stack.Screen
+          name="LandingPage" 
+          component={LandingPage} 
+          options={{ title: 'DriveSG 👋' }}
+          />
+          <Stack.Screen 
+          name="TestQuestions"
+          component={TestQuestions} 
+          options={{ headerBackTitleVisible: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight,
-    backgroundColor: theme.colors.primary,
-    padding: 15,
-  },
-});

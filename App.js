@@ -2,7 +2,7 @@ import React from 'react';
 import AppLoading from 'expo-app-loading';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useFonts, Lato_400Regular } from '@expo-google-fonts/lato';
-import { NativeRouter } from 'react-router-native';
+import { StatusBar } from 'expo-status-bar';
 
 import Main from './src/components/Main';
 
@@ -12,11 +12,10 @@ const App = () => {
     return <AppLoading />
   }
   return (
-    <NativeRouter>
-      <SafeAreaProvider>
-        <Main />
-      </SafeAreaProvider>
-    </NativeRouter>
+    <SafeAreaProvider>
+      <Main />
+      <StatusBar style="light" backgroundColor="#282d54"/>
+    </SafeAreaProvider> 
   );
 };
 
