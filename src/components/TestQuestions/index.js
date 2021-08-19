@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, FlatList, StyleSheet, Text } from 'react-native';
 import AppLoading from 'expo-app-loading';
@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: theme.colors.primary,
+    alignItems: 'center'
   },
   timer: {
     color: theme.colors.textPrimary,
@@ -22,21 +23,33 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function TestQuestions() {
-  const navigation = useNavigation();
-  const questions = useFetchQuestions("btt1");
-  // const timer = useTimer();
+export default function TestQuestions({ route }) {
+  const { name } = route.params;
 
-  // useEffect(() => {
-  //   navigation.setOptions({ headerRight: () => { <Text style={styles.timer}>{timer}</Text> }})
-  // }, [timer])
+  const navigation = useNavigation();
+  const questions = useFetchQuestions(name.replace(/\s/g, '').toLowerCase());
+
+  const [progressIndex, setProgressIndex] = useState(0)
+
+  const onViewRef = useRef((viewableItems) => {
+    setProgressIndex(viewableItems.viewableItems[0]?.index)
+  });
+  const viewConfigRef = useRef({ itemVisiblePercentThreshold: 20 });
+  const flatListRef = useRef();
+  const scrollToIndex = (index) => {
+    flatListRef.current.scrollToIndex({ index })
+  }
+  const timer = useTimer();
+  useEffect(() => {
+    navigation.setOptions({ headerRight: () => ( <Text style={styles.timer}>{timer}</Text> )})
+  }, [timer])
 
   if (!questions) {
-    return <AppLoading style={styles.container} />
+    return <SafeAreaView style={styles.container} />
   }
   return (
     <SafeAreaView style={styles.container}>
-      <ProgressBar progress={0.3} width={300} height={20}/>
+      <ProgressBar progress={progressIndex / 50} width={300} height={20} borderRadius={10} marginTop={10} />
       <FlatList
       data={questions}
       renderItem={({ item, index }) => <TestQuestion data={item.data} index={index} />}
@@ -44,10 +57,12 @@ export default function TestQuestions() {
       horizontal
       pagingEnabled={true}
       showsHorizontalScrollIndicator={false}
-      legacyImplementation={false}
-      initialNumToRender={10}
+      initialNumToRender={3}
+      viewabilityConfig={viewConfigRef.current}
+      onViewableItemsChanged={onViewRef.current}
+      ref={flatListRef}
       />
-      <Footer />
+      <Footer scrollToIndex={scrollToIndex} index={progressIndex} />
     </SafeAreaView>
   );
 }

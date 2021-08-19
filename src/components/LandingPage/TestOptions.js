@@ -20,8 +20,16 @@ const styles = StyleSheet.create({
 export default function TestOptions() {
   return (
     <View>
-        <TestOption text={'Basic Theory Test'} />
-        <TestOption text={'Final Theory Test'} />
+        <TestOption 
+        text={'Basic Theory Test'} 
+        subheading={'Take this if you are starting out'}
+        options={['BTT', 4]}
+        />
+        <TestOption 
+        text={'Final Theory Test'} 
+        subheading={'Take this after passing BTT'}
+        options={['FTT', 6]}
+        />
     </View>
   );
 }
