@@ -2,7 +2,6 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import btt1 from '../assets/output.json';
 import theme from '../theme';
 
 import LandingPage from './LandingPage';
@@ -35,8 +34,9 @@ export default function Main() {
           // options={{ headerBackTitleVisible: false }}
           />
           <Stack.Screen
-          name="Results"
+          name="Result"
           component={Results}
+          options={({ route }) => ({ answers: route.params.answers })}
           />
         </Stack.Navigator>
       </NavigationContainer>

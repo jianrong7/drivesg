@@ -25,9 +25,17 @@ const styles = StyleSheet.create({
 
 export default function OptionButton({ text, data, scrollToIndex, answers, setAnswers }) {
   const handleOptionPress = () => {
-    const found = answers.find(answer => answer.questionNumber === data.questionNumber);
-    console.log(found)
-    setAnswers([ ...answers, { questionNumber: data.questionNumber, optionNumber: data.optionNumber }]);
+    const answerObj = { questionNumber: data.questionNumber, optionNumber: data.optionNumber }
+
+    const found = answers.findIndex(answer => answer.questionNumber === data.questionNumber)
+
+    if (found < 0) {
+      setAnswers([...answers, answerObj])
+    } else {
+      let newAnswers = [...answers]
+      newAnswers.splice(found, 1)
+      setAnswers([...newAnswers, answerObj])
+    }    
     scrollToIndex(data.questionNumber + 1)
   }
   return (

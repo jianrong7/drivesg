@@ -4,9 +4,10 @@ export default function useTimer() {
   const [timer, setTimer] = useState(0);
   
   useEffect(() => {
-    setInterval(() => {
+    let timerInterval = setInterval(() => {
       setTimer(timer => timer + 1);
     }, 1000)
+    return () => clearInterval(timerInterval)
   }, [])
 
   let minutes = Math.floor(timer / 60);
