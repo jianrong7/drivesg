@@ -1,5 +1,6 @@
-import React from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import React from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import theme from '../../theme';
 
@@ -24,15 +25,23 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function Footer({ scrollToIndex, index }) {
+export default function Footer({ scrollToIndex, index, finish }) {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <Pressable style={styles.button} onPress={() => scrollToIndex(index - 1)}>
         <Text style={styles.font}>Previous</Text>
       </Pressable>
-      <Pressable style={styles.button} onPress={() => scrollToIndex(index + 1)}>
+      {finish ?
+      <Pressable style={styles.button} onPress={() => navigation.navigate('Results')}>
+        <Text style={styles.font}>Finish</Text>
+      </Pressable>   
+      :
+      <Pressable style={styles.button} onPress={() => scrollToIndex(index + 1)} >
         <Text style={styles.font}>Next</Text>
-      </Pressable>      
+      </Pressable>   
+      }
+   
     </View>
   )
 }

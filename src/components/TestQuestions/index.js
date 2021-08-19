@@ -6,10 +6,10 @@ import ProgressBar from 'react-native-progress/Bar';
 
 import useFetchQuestions from '../../hooks/useFetchQuestions';
 import useTimer from '../../hooks/useTimer';
-import convertSecondsToMinutesAndSeconds from '../utils/convertSecondsToMinutesAndSeconds';
 import theme from '../../theme';
 import TestQuestion from './TestQuestion';
 import Footer from './Footer';
+import QuestionFlatList from './QuestionsFlatList';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,45 +24,44 @@ const styles = StyleSheet.create({
 });
 
 export default function TestQuestions({ route }) {
-  const { name } = route.params;
+  const [progressIndex, setProgressIndex] = useState(0);
+  const [answers, setAnswers] = useState([]);
 
+  const { name } = route.params;
   const navigation = useNavigation();
   const questions = useFetchQuestions(name.replace(/\s/g, '').toLowerCase());
 
-  const [progressIndex, setProgressIndex] = useState(0)
-
-  const onViewRef = useRef((viewableItems) => {
-    setProgressIndex(viewableItems.viewableItems[0]?.index)
-  });
-  const viewConfigRef = useRef({ itemVisiblePercentThreshold: 20 });
   const flatListRef = useRef();
-  const scrollToIndex = (index) => {
-    flatListRef.current.scrollToIndex({ index })
-  }
+
   const timer = useTimer();
+
   useEffect(() => {
     navigation.setOptions({ headerRight: () => ( <Text style={styles.timer}>{timer}</Text> )})
   }, [timer])
+
+  const scrollToIndex = (index) => {
+    flatListRef.current.scrollToIndex({ index })
+  }
 
   if (!questions) {
     return <SafeAreaView style={styles.container} />
   }
   return (
     <SafeAreaView style={styles.container}>
-      <ProgressBar progress={progressIndex / 50} width={300} height={20} borderRadius={10} marginTop={10} />
-      <FlatList
-      data={questions}
-      renderItem={({ item, index }) => <TestQuestion data={item.data} index={index} />}
-      keyExtractor={item => item.id}
-      horizontal
-      pagingEnabled={true}
-      showsHorizontalScrollIndicator={false}
-      initialNumToRender={3}
-      viewabilityConfig={viewConfigRef.current}
-      onViewableItemsChanged={onViewRef.current}
-      ref={flatListRef}
+      <ProgressBar progress={progressIndex / 49} width={300} height={20} borderRadius={10} marginTop={10} />
+      <QuestionFlatList 
+      data={questions} 
+      forwardedRef={flatListRef} 
+      scrollToIndex={scrollToIndex} 
+      setProgressIndex={setProgressIndex} 
+      answers={answers} 
+      setAnswers={setAnswers} 
       />
+      {progressIndex === 49 ?
+      <Footer scrollToIndex={scrollToIndex} index={progressIndex} finish={true} /> 
+      :
       <Footer scrollToIndex={scrollToIndex} index={progressIndex} />
+      }
     </SafeAreaView>
   );
 }

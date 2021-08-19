@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native'
 
 import theme from '../../theme';
 
@@ -23,10 +23,16 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function OptionButton({ text }) {
+export default function OptionButton({ text, data, scrollToIndex, answers, setAnswers }) {
+  const handleOptionPress = () => {
+    const found = answers.find(answer => answer.questionNumber === data.questionNumber);
+    console.log(found)
+    setAnswers([ ...answers, { questionNumber: data.questionNumber, optionNumber: data.optionNumber }]);
+    scrollToIndex(data.questionNumber + 1)
+  }
   return (
-    <View style={styles.button}>
+    <Pressable style={styles.button} onPress={handleOptionPress}>
       <Text style={styles.font}>{text}</Text>
-    </View>
+    </Pressable>
   )
 }
