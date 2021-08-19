@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function Footer({ scrollToIndex, index, finish }) {
+export default function Footer({ scrollToIndex, index, finish, data, name }) {
   const navigation = useNavigation()
   return (
     <View style={styles.container}>
@@ -33,7 +33,7 @@ export default function Footer({ scrollToIndex, index, finish }) {
         <Text style={styles.font}>Previous</Text>
       </Pressable>
       {finish ?
-      <Pressable style={styles.button} onPress={() => navigation.navigate('Results')}>
+      <Pressable style={styles.button} onPress={() => navigation.navigate('Result', { data, name })}>
         <Text style={styles.font}>Finish</Text>
       </Pressable>   
       :
