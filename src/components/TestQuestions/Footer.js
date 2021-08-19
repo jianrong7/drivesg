@@ -6,7 +6,7 @@ import theme from '../../theme';
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-evenly'
   },
   button: {
     height: 50,
@@ -24,13 +24,13 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function Footer() {
+export default function Footer({ scrollToIndex, index }) {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={() => scrollToIndex(index - 1)}>
         <Text style={styles.font}>Previous</Text>
       </Pressable>
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={() => scrollToIndex(index + 1)}>
         <Text style={styles.font}>Next</Text>
       </Pressable>      
     </View>
