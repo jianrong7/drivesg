@@ -7,6 +7,7 @@ import theme from '../theme';
 
 import LandingPage from './LandingPage';
 import TestQuestions from './TestQuestions';
+import Results from './Results';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +33,10 @@ export default function Main() {
           component={TestQuestions}
           options={({ route }) => ({ title: route.params.name })}
           // options={{ headerBackTitleVisible: false }}
+          />
+          <Stack.Screen
+          name="Results"
+          component={Results}
           />
         </Stack.Navigator>
       </NavigationContainer>

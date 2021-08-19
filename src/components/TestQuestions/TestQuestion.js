@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default function TestQuestion({ data, index }) {
+export default function TestQuestion({ data, index, scrollToIndex, answers, setAnswers }) {
   return (
     <View style={styles.item}>
       <Text style={styles.questionHeader}>Question {index + 1} / 50</Text>
@@ -43,7 +43,7 @@ export default function TestQuestion({ data, index }) {
       : null}
       <View style={styles.options}>
         {data.options.map((option, i) => {
-          return <OptionButton key={index + i} text={option.option} />
+          return <OptionButton key={index + i} text={option.option} data={{ questionNumber: index, optionNumber: i }} scrollToIndex={scrollToIndex} answers={answers} setAnswers={setAnswers} />
         })}
       </View>
     </View>
