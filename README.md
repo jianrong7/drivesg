@@ -1,8 +1,7 @@
 "# drivesg" 
 ### To Do
-- Add splash landing page
-- When holding onto button, add ripple effect (checkout react gesture handler)
+- When holding onto button, add ripple effect
 - Edit weirder questions in firebase
-- Make buttons work
-- Make Progress Bar work
-- Adding images
+- Add functionality for other tests including FTT
+- Add try again and go to home buttons at the end of results page
+- Make change in colour during button press more gradual
