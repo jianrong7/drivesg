@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     width: screen.width - 40,
     justifyContent: 'center',
     elevation: 10,
-    // backgroundColor: theme.colors.secondary,
   },
   font: {
     color: theme.colors.textPrimary,
@@ -38,8 +37,10 @@ export default function OptionButton({ text, data, changeColour, scrollToIndex, 
       let newAnswers = [...answers]
       newAnswers.splice(found, 1)
       setAnswers([...newAnswers, answerObj])
+    }
+    if (data.questionNumber !== 49) {
+      scrollToIndex(data.questionNumber + 1)
     }    
-    scrollToIndex(data.questionNumber + 1)
   }
 
   return (

@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     paddingBottom: 40
-    // backgroundColor: theme.colors.tertiary
   },
   button: {
     height: 50,
@@ -43,7 +42,7 @@ export default function Footer({ scrollToIndex, index, data, name }) {
       }
 
       {index === 49 ?
-      <Pressable onPress={() => navigation.navigate('Result', { data, name })} hitSlop={60}>
+      <Pressable onPress={() => navigation.navigate('Results', { data, name })} hitSlop={60}>
         <Text style={styles.font}>Finish</Text>
       </Pressable>   
       :

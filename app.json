@@ -20,6 +20,10 @@
         "backgroundColor": "#353a65"
       }
     },
+    "androidStatusBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#282d54"
+    },
     "web": {
       "favicon": "./assets/icon.png"
     },
@@ -27,6 +31,8 @@
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#353a65"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/jianrong7/drivesg"
   }
 }

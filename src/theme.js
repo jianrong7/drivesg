@@ -9,7 +9,7 @@ const theme = {
     tertiary: '#3e549e',
     pressed: '#2276c9',
     correct: '#27ae60',
-    wrong: '#ff004e',
+    wrong: '#9e284c',
     grey: '#a8a9b2',
   },
   fontSizes: {
