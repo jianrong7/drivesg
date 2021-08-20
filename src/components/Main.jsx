@@ -34,7 +34,7 @@ export default function Main() {
           // options={{ headerBackTitleVisible: false }}
           />
           <Stack.Screen
-          name="Result"
+          name="Results"
           component={Results}
           options={({ route }) => ({ answers: route.params.answers })}
           />
