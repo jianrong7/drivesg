@@ -17,7 +17,17 @@ export default function Main() {
         initialRouteName="LandingPage"
         screenOptions={{
           headerStyle: {
-            backgroundColor: theme.colors.primary
+            backgroundColor: theme.colors.primary,
+            shadowColor: 'transparent',
+            elevation: 0,
+            shadowOpacity: 0,
+            borderBottomWidth: 0,
+            height: 0,
+          },
+          headerTitleStyle : {
+            fontSize: theme.fontSizes.heading,
+            color: theme.colors.textPrimary,
+            fontWeight: theme.fontWeights.bold
           },
           headerTintColor: theme.colors.textPrimary
         }}
@@ -31,7 +41,6 @@ export default function Main() {
           name="TestQuestions"
           component={TestQuestions}
           options={({ route }) => ({ title: route.params.name })}
-          // options={{ headerBackTitleVisible: false }}
           />
           <Stack.Screen
           name="Results"
