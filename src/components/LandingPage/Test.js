@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: 90,
+    height: 65,
     width: 90,
     borderRadius: 15,
     margin: 10,
@@ -31,7 +31,7 @@ export default function Test({ text }) {
       onPress={() => navigation.navigate('TestQuestions', { name: text })} 
       style={({ pressed }) => [
         {
-          backgroundColor: pressed ? theme.colors.pressed : theme.colors.secondary
+          backgroundColor: pressed ? theme.colors.tertiary : theme.colors.pressed
         },
         styles.container
       ]}

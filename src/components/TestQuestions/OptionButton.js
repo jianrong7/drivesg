@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native'
+import React, { useState } from 'react'
+import { Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 
 import theme from '../../theme';
 
@@ -9,22 +9,25 @@ const styles = StyleSheet.create({
   button: {
     padding: 10,
     borderRadius: 15,
-    marginBottom: 15,
+    marginTop: 15,
     height: 80,
-    width: screen.width - 35,
+    width: screen.width - 40,
     justifyContent: 'center',
     elevation: 10,
-    backgroundColor: theme.colors.secondary,
+    // backgroundColor: theme.colors.secondary,
   },
   font: {
     color: theme.colors.textPrimary,
     fontSize: theme.fontSizes.body,
+    fontWeight: theme.fontWeights.semiBold,
     textAlign: 'center'
   }
 });
 
-export default function OptionButton({ text, data, scrollToIndex, answers, setAnswers }) {
+export default function OptionButton({ text, data, changeColour, scrollToIndex, answers, setAnswers }) {
   const handleOptionPress = () => {
+    changeColour(data.optionNumber)
+
     const answerObj = { questionNumber: data.questionNumber, optionNumber: data.optionNumber }
 
     const found = answers.findIndex(answer => answer.questionNumber === data.questionNumber)
@@ -38,8 +41,9 @@ export default function OptionButton({ text, data, scrollToIndex, answers, setAn
     }    
     scrollToIndex(data.questionNumber + 1)
   }
+
   return (
-    <Pressable style={styles.button} onPress={handleOptionPress}>
+    <Pressable onPress={handleOptionPress} style={({ pressed }) => [styles.button, { backgroundColor: pressed ? theme.colors.tertiary : data.pressed.backgroundColor }]} >
       <Text style={styles.font}>{text}</Text>
     </Pressable>
   )
