@@ -7,7 +7,9 @@ import theme from '../../theme';
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
+    paddingBottom: 40
+    // backgroundColor: theme.colors.tertiary
   },
   button: {
     height: 50,
@@ -20,24 +22,32 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.secondary
   },
   font: {
-    color: theme.colors.textPrimary,
-    fontSize: theme.fontSizes.body
+    color: theme.colors.secondary,
+    fontSize: theme.fontSizes.body,
+    fontWeight: theme.fontWeights.bold
   }
 });
 
-export default function Footer({ scrollToIndex, index, finish, data, name }) {
+export default function Footer({ scrollToIndex, index, data, name }) {
   const navigation = useNavigation()
   return (
     <View style={styles.container}>
-      <Pressable style={styles.button} onPress={() => scrollToIndex(index - 1)}>
-        <Text style={styles.font}>Previous</Text>
-      </Pressable>
-      {finish ?
-      <Pressable style={styles.button} onPress={() => navigation.navigate('Result', { data, name })}>
+      {index > 0 ?
+        <Pressable onPress={() => scrollToIndex(index - 1)} hitSlop={60}>
+          <Text style={styles.font}>Previous</Text>
+        </Pressable>
+        :
+        <Pressable disabled>
+          <Text style={styles.font}>Previous</Text>
+        </Pressable>
+      }
+
+      {index === 49 ?
+      <Pressable onPress={() => navigation.navigate('Result', { data, name })} hitSlop={60}>
         <Text style={styles.font}>Finish</Text>
       </Pressable>   
       :
-      <Pressable style={styles.button} onPress={() => scrollToIndex(index + 1)} >
+      <Pressable onPress={() => scrollToIndex(index + 1)} hitSlop={60}>
         <Text style={styles.font}>Next</Text>
       </Pressable>   
       }

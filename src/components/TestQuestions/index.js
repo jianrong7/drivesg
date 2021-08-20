@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import ProgressBar from 'react-native-progress/Bar';
 
 import useFetchQuestions from '../../hooks/useFetchQuestions';
@@ -52,12 +52,12 @@ export default function TestQuestions({ route }) {
     <SafeAreaView style={styles.container}>
       <ProgressBar progress={progressIndex / 49} style={styles.progressBar} height={20} width={310} />
       <QuestionFlatList 
-      data={questions} 
-      forwardedRef={flatListRef} 
-      scrollToIndex={scrollToIndex} 
-      setProgressIndex={setProgressIndex} 
-      answers={answers} 
-      setAnswers={setAnswers} 
+        data={questions} 
+        forwardedRef={flatListRef} 
+        scrollToIndex={scrollToIndex} 
+        setProgressIndex={setProgressIndex} 
+        answers={answers} 
+        setAnswers={setAnswers} 
       />
       <FooterComponent scrollToIndex={scrollToIndex} index={progressIndex} data={{ answers, questions }} name={name} />
     </SafeAreaView>

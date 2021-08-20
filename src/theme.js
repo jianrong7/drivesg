@@ -5,9 +5,9 @@ const theme = {
     textPrimary: '#ffffff',
     textSecondary: '#3e9ffe',
     primary: '#353a65',
-    secondary: '#0369CE',
-    tertiary: '#343b78',
-    pressed: '#1666b5',
+    secondary: '#3e9fff',
+    tertiary: '#3e549e',
+    pressed: '#2276c9',
     correct: '#27ae60',
     wrong: '#ff004e',
     grey: '#a8a9b2',
@@ -20,14 +20,15 @@ const theme = {
   fonts: {
     main: Platform.select({
       android: 'Lato-Regular',
-      ios: 'Arial',
+      ios: 'Lato-Regular',
       default: 'System'
     })
   },
   fontWeights: {
     normal: '400',
+    light: '300',
     bold: '700',
-    thin: '200'
+    thin: '100'
   },
 };
 
