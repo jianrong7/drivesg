@@ -12,13 +12,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jianrong7.drivesg",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#353a65"
-      }
+      },
+      "package": "com.jianrong7.drivesg",
+      "versionCode": 1
     },
     "androidStatusBar": {
       "barStyle": "light-content",
