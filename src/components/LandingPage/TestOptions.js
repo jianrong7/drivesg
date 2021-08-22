@@ -23,12 +23,12 @@ export default function TestOptions() {
         <TestOption 
         text={'Basic Theory Test'} 
         subheading={'Take this if you are starting out'}
-        options={['BTT', 4]}
+        options={['BTT', 6]}
         />
         <TestOption 
         text={'Final Theory Test'} 
         subheading={'Take this after passing BTT'}
-        options={['FTT', 6]}
+        options={['FTT', 10]}
         />
     </View>
   );

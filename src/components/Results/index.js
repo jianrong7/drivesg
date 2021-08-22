@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, Text } from 'react-native';
 
 import useCalculateScore from '../../hooks/useCalculateScore';
 import theme from '../../theme';
 import ResultHeader from './ResultHeader';
 import ResultQuestion from './ResultQuestion';
+import ResultFooter from './ResultFooter';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,6 +24,8 @@ export default function Results({ route }) {
   const { data, name } = route.params;
   const scoreObj = useCalculateScore(data);
 
+  console.log(data.timer)
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -34,7 +37,8 @@ export default function Results({ route }) {
         keyExtractor={item => item.id}
         showsVerticalScrollIndicator={false}
         initialNumToRender={3}
-        ListHeaderComponent={() => <ResultHeader name={name} scoreObj={scoreObj} />}
+        ListHeaderComponent={() => <ResultHeader name={name} scoreObj={scoreObj} time={data.timer} />}
+        ListFooterComponent={() => <ResultFooter name={name} />}
       />
     </View>
   )

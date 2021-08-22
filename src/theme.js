@@ -8,9 +8,9 @@ const theme = {
     secondary: '#3e9fff',
     tertiary: '#3e549e',
     pressed: '#2276c9',
-    correct: '#27ae60',
-    wrong: '#9e284c',
-    grey: '#a8a9b2',
+    correct: '#229954',
+    wrong: '#bd3146',
+    wrongScore: '#eb2d53',
   },
   fontSizes: {
     body: 16,

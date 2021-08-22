@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 
 import theme from '../../theme';
@@ -44,7 +44,9 @@ export default function OptionButton({ text, data, changeColour, scrollToIndex, 
   }
 
   return (
-    <Pressable onPress={handleOptionPress} style={({ pressed }) => [styles.button, { backgroundColor: pressed ? theme.colors.tertiary : data.pressed.backgroundColor }]} >
+    <Pressable onPress={handleOptionPress} 
+    style={({ pressed }) => [styles.button, { backgroundColor: pressed ? theme.colors.tertiary : data.pressed.backgroundColor }]}
+    >
       <Text style={styles.font}>{text}</Text>
     </Pressable>
   )

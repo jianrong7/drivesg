@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
 export default function LandingPage() {
   return (
     <View style={styles.container}>
-      {/* <Header /> */}
       <TestOptions />
     </View>
   );
