@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     margin: 10,
     justifyContent: 'center',
     elevation: 10,
+    backgroundColor: theme.colors.pressed
   },
   text: {
     color: theme.colors.textPrimary,
@@ -28,14 +29,9 @@ export default function Test({ text }) {
   return (
     <View>
       <Pressable 
-      onPress={() => navigation.navigate('TestQuestions', { name: text })} 
-      style={({ pressed }) => [
-        {
-          backgroundColor: pressed ? theme.colors.tertiary : theme.colors.pressed
-        },
-        styles.container
-      ]}
-      android_ripple
+      onPress={() => navigation.navigate('TestQuestions', { name: text })}
+      android_ripple={{color: theme.colors.tertiary, radius: 49}}
+      style={styles.container}
       >
         <Text style={styles.text}>{text}</Text>
       </Pressable>

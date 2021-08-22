@@ -59,7 +59,7 @@ export default function TestQuestions({ route }) {
         answers={answers} 
         setAnswers={setAnswers} 
       />
-      <FooterComponent scrollToIndex={scrollToIndex} index={progressIndex} data={{ answers, questions }} name={name} />
+      <FooterComponent scrollToIndex={scrollToIndex} index={progressIndex} data={{ answers, questions, timer }} name={name} />
     </SafeAreaView>
   );
 }

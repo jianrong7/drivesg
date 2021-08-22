@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
   },
   text: {
     color: theme.colors.textPrimary,
-    marginBottom: 10
+    marginBottom: 10,
+    fontSize: theme.fontSizes.body
   },
   header: {
     fontSize: theme.fontSizes.heading,
@@ -25,16 +26,17 @@ const styles = StyleSheet.create({
   },
 })
 
-export default function ResultHeader({ name, scoreObj }) {
+export default function ResultHeader({ name, scoreObj, time }) {
   return (
     <View style={styles.container}>
       <Text style={[styles.text, styles.header]}>{name}</Text>
+      <Text style={[styles.text]}>Time elapsed: {time}</Text>
       <ProgressCircle 
       size={100} 
       borderWidth={2} 
       strokeCap={'round'} 
       thickness={8} 
-      color={scoreObj.status === 'Passed' ? theme.colors.correct : theme.colors.wrong} 
+      color={scoreObj.status === 'Passed' ? theme.colors.correct : theme.colors.wrongScore} 
       progress={scoreObj.percentage/100} 
       showsText 
       formatText={() => `${scoreObj.score}/50`} />
