@@ -42,7 +42,10 @@ export default function Main() {
           <Stack.Screen 
           name="TestQuestions"
           component={TestQuestions}
-          options={({ route }) => ({ title: route.params.name })}
+          options={({ route }) => ({ 
+            title: route.params.name,
+            headerBackTitle: 'Home'
+          })}
           />
           <Stack.Screen
           name="Results"
@@ -50,7 +53,7 @@ export default function Main() {
           options={({ navigation, route }) => ({
             answers: route.params.answers,
             headerLeft: () => (
-              <HeaderBackButton tintColor={theme.colors.textPrimary} label={'Home'} onPress={() => navigation.navigate('LandingPage')} />
+              <HeaderBackButton labelVisible tintColor={theme.colors.textPrimary} label={'Home'} onPress={() => navigation.navigate('LandingPage')} />
             )
           })}
           />

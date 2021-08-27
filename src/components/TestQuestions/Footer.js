@@ -32,7 +32,7 @@ export default function Footer({ scrollToIndex, index, data, name }) {
   return (
     <View style={styles.container}>
       {index > 0 ?
-        <Pressable onPress={() => scrollToIndex(index - 1)} hitSlop={5}>
+        <Pressable onPress={() => scrollToIndex(index - 1)} hitSlop={{ bottom: 10, left: 10, right: 10, top: null}}>
           <Text style={styles.font}>Previous</Text>
         </Pressable>
         :
@@ -42,11 +42,11 @@ export default function Footer({ scrollToIndex, index, data, name }) {
       }
 
       {index === 49 ?
-      <Pressable onPress={() => navigation.navigate('Results', { data, name })} hitSlop={5}>
+      <Pressable onPress={() => navigation.navigate('Results', { data, name })} hitSlop={{ bottom: 10, left: 10, right: 10, top: null}}>
         <Text style={styles.font}>Finish</Text>
       </Pressable>   
       :
-      <Pressable onPress={() => scrollToIndex(index + 1)} hitSlop={5}>
+      <Pressable onPress={() => scrollToIndex(index + 1)} hitSlop={{ bottom: 10, left: 10, right: 10, top: null}}>
         <Text style={styles.font}>Next</Text>
       </Pressable>   
       }
