@@ -30,7 +30,7 @@ export default function Main() {
             color: theme.colors.textPrimary,
             fontWeight: theme.fontWeights.bold
           },
-          headerTintColor: theme.colors.textPrimary
+          headerTintColor: theme.colors.textPrimary,
         }}
         >
           <Stack.Screen
