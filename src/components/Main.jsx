@@ -1,12 +1,14 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HeaderBackButton } from '@react-navigation/elements';
+
 
 import theme from '../theme';
 
 import LandingPage from './LandingPage';
 import TestQuestions from './TestQuestions';
-import Results from './Results';
+import Results from './Results'
 
 const Stack = createNativeStackNavigator();
 
@@ -45,7 +47,12 @@ export default function Main() {
           <Stack.Screen
           name="Results"
           component={Results}
-          options={({ route }) => ({ answers: route.params.answers })}
+          options={({ navigation, route }) => ({
+            answers: route.params.answers,
+            headerLeft: () => (
+              <HeaderBackButton tintColor={theme.colors.textPrimary} label={'Home'} onPress={() => navigation.navigate('LandingPage')} />
+            )
+          })}
           />
         </Stack.Navigator>
       </NavigationContainer>

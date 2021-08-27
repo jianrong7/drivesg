@@ -24,8 +24,6 @@ export default function Results({ route }) {
   const { data, name } = route.params;
   const scoreObj = useCalculateScore(data);
 
-  console.log(data.timer)
-
   return (
     <View style={styles.container}>
       <FlatList
