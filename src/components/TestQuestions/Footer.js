@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 
 import theme from '../../theme';
 
+const hitRect = { bottom: 10, left: 10, right: 10, top: 0 };
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -32,7 +34,7 @@ export default function Footer({ scrollToIndex, index, data, name }) {
   return (
     <View style={styles.container}>
       {index > 0 ?
-        <Pressable onPress={() => scrollToIndex(index - 1)} hitSlop={{ bottom: 10, left: 10, right: 10, top: null}}>
+        <Pressable onPress={() => scrollToIndex(index - 1)} hitSlop={hitRect}>
           <Text style={styles.font}>Previous</Text>
         </Pressable>
         :
@@ -42,11 +44,11 @@ export default function Footer({ scrollToIndex, index, data, name }) {
       }
 
       {index === 49 ?
-      <Pressable onPress={() => navigation.navigate('Results', { data, name })} hitSlop={{ bottom: 10, left: 10, right: 10, top: null}}>
+      <Pressable onPress={() => navigation.navigate('Results', { data, name })} hitSlop={hitRect}>
         <Text style={styles.font}>Finish</Text>
       </Pressable>   
       :
-      <Pressable onPress={() => scrollToIndex(index + 1)} hitSlop={{ bottom: 10, left: 10, right: 10, top: null}}>
+      <Pressable onPress={() => scrollToIndex(index + 1)} hitSlop={hitRect}>
         <Text style={styles.font}>Next</Text>
       </Pressable>   
       }

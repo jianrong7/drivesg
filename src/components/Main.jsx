@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HeaderBackButton } from '@react-navigation/elements';
 
-
 import theme from '../theme';
 
 import LandingPage from './LandingPage';
@@ -53,7 +52,11 @@ export default function Main() {
           options={({ navigation, route }) => ({
             answers: route.params.answers,
             headerLeft: () => (
-              <HeaderBackButton labelVisible tintColor={theme.colors.textPrimary} label={'Home'} onPress={() => navigation.navigate('LandingPage')} />
+              <HeaderBackButton
+              tintColor={theme.colors.textPrimary} 
+              label={'Home'}
+              onPress={() => navigation.navigate('LandingPage')} 
+              />
             )
           })}
           />

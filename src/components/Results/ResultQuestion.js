@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
+import useBgColor from '../../hooks/useBgColor';
 
 import theme from '../../theme';
 import ResultQuestionOption from './ResultQuestionOption';
@@ -34,25 +35,8 @@ const styles = StyleSheet.create({
 });
 
 export default function ResultQuestion({ data, answer, index }) {
-  const [bgColor, setBgColor] = useState([
-    theme.colors.pressed,
-    theme.colors.pressed,
-    theme.colors.pressed,
-  ])
+  const bgColor = useBgColor(data, answer);
 
-  useEffect(() => {
-    const newBgColor = []
-    for (let i = 0; i < 3; i++) {
-      if (data.options[i].isCorrect) {
-        newBgColor.push(theme.colors.correct)
-      } else if (i === answer.optionNumber) {
-        newBgColor.push(theme.colors.wrong)
-      } else {
-        newBgColor.push(theme.colors.pressed)
-      }
-    }
-    setBgColor(newBgColor)
-  }, [])
   return (
     <View style={styles.item}>
       <Text style={styles.questionHeader}>Question {index + 1} / 50</Text>
