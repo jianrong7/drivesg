@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: screen.width,
     padding: 20,
+    justifyContent: 'flex-start',
   },
   questionHeader: {
     color: theme.colors.textPrimary,
@@ -22,14 +23,14 @@ const styles = StyleSheet.create({
   question: {
     color: theme.colors.textPrimary,
     fontSize: theme.fontSizes.subheading,
-    flexGrow: 2,
+    flexGrow: 1,
     textAlign: 'center',
   },
   picture: {
-    minHeight: 200,
-    minWidth: 300,
-    margin: 15,
-    flexGrow: 5
+    minHeight: 120,
+    minWidth: 220,
+    margin: 10,
+    flexGrow: 1
   }
 });
 
@@ -67,7 +68,7 @@ export default function TestQuestion({ data, index, scrollToIndex, answers, setA
       {data.image ? 
       <Image style={styles.picture} source={{ uri: data.image }} /> 
       : null}
-      <View style={styles.options}>
+      <View>
         {data.options.map((option, i) => {
           return (
             <OptionButton 

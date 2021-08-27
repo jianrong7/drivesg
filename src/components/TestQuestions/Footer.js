@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    paddingBottom: 40
+    marginBottom: 20
   },
   button: {
     height: 50,
@@ -32,7 +32,7 @@ export default function Footer({ scrollToIndex, index, data, name }) {
   return (
     <View style={styles.container}>
       {index > 0 ?
-        <Pressable onPress={() => scrollToIndex(index - 1)} hitSlop={60}>
+        <Pressable onPress={() => scrollToIndex(index - 1)} hitSlop={5}>
           <Text style={styles.font}>Previous</Text>
         </Pressable>
         :
@@ -42,11 +42,11 @@ export default function Footer({ scrollToIndex, index, data, name }) {
       }
 
       {index === 49 ?
-      <Pressable onPress={() => navigation.navigate('Results', { data, name })} hitSlop={60}>
+      <Pressable onPress={() => navigation.navigate('Results', { data, name })} hitSlop={5}>
         <Text style={styles.font}>Finish</Text>
       </Pressable>   
       :
-      <Pressable onPress={() => scrollToIndex(index + 1)} hitSlop={60}>
+      <Pressable onPress={() => scrollToIndex(index + 1)} hitSlop={5}>
         <Text style={styles.font}>Next</Text>
       </Pressable>   
       }
