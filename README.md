@@ -20,7 +20,7 @@
 
 ## 📝 Reflections
 
-I met several challenges along the way but I was able to overcome them using various technologies. Read more about my journey in this Medium article.
+I met several challenges along the way but I was able to overcome them using various technologies. Read more about my journey in [this Medium article](https://jianrong7.medium.com/drivesg-reflections-263784036e3a).
 
 > This is definitely not a perfect app. But like what Sheryl Sandberg said, "done is better than perfect". I will continue working on this app but I am glad that this app is ready for production.
 
